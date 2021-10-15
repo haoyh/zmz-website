@@ -1,6 +1,13 @@
 .DS_Store
 node_modules
 # /dist
+public
+src
+.yml
+*.json
+.sh
+.js
+.md
 
 
 # local env files
