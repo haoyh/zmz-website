@@ -3,8 +3,13 @@
     <ul>
       <li v-for="item in lists" :key="item" v-on:click="openChildPage(item)">
         <div id="content">
-          <img :src="require('../assets/' + item.icon)" :alt="item.name" />
-          <div>{{ item.name }}</div>
+          <img
+            v-if="item.icon"
+            :src="require('../assets/' + item.icon)"
+            :alt="item.name"
+          />
+          <div id="name">{{ item.name }}</div>
+          <div id="desc">{{ item.desc }}</div>
         </div>
       </li>
     </ul>
@@ -19,9 +24,14 @@ export default {
   },
   methods: {
     openChildPage(info) {
-      console.log(info.name);
-      //   this.$router.push("/news");
-      this.$router.push(info.path);
+      this.$router.push({ path: info.path });
+      // 查询参数，会拼接到 路径 中
+      //   this.$router.push({ path: info.path, query: { name: "aa" } });
+      // 参数，刷新会丢失，不会拼接到路径中
+      //   this.$router.push({
+      //     name: info.path,
+      //     params: { title: info.name },
+      //   });
     },
   },
 };
@@ -61,5 +71,13 @@ img {
 
 #content {
   padding: 8px 4px;
+}
+
+#name {
+  font-size: 16px;
+}
+
+#desc {
+  font-size: 14px;
 }
 </style>
