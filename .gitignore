@@ -5,9 +5,9 @@ public
 src
 .yml
 *.json
-.sh
-.js
-.md
+*.sh
+*.js
+*.md
 
 
 # local env files
